@@ -2,9 +2,6 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const { Pool } = require("pg");
 require("dotenv").config();
-// const table = require("./db/schema.sql");
-
-// TODO: Create a function to write README file
 
 const pool = new Pool(
   {
@@ -37,69 +34,7 @@ function init() {
           "Add an Employee",
           "Update an Employee Role",
         ],
-        //chose to add a role
       },
-
-      //   {
-      //     type: "input",
-      //     name: "Add Department",
-      //     message: "Enter the name of the department ",
-      //   },
-      //   {
-      //     type: "input",
-      //     name: "Add Role1",
-      //     message: "Add the employee's name ",
-      //   },
-
-      //   {
-      //     type: "input",
-      //     name: "Add Role2",
-      //     message: "Add the employee's salary",
-      //   },
-
-      //   {
-      //     type: "input",
-      //     name: "Add Role3",
-      //     message: "Add the employee's department",
-      //   },
-      // Add role to the database
-      //   {
-      // choose to add an employee
-      //     type: "input",
-      //     name: "Add Employee First Name",
-      //     message: "Add Employee's First Name",
-      //   },
-      //   {
-      //     type: "input",
-      //     name: "Add Employee Last Name",
-      //     message: "Add Employee's Last Name",
-      //   },
-      //   {
-      //     type: "input",
-      //     name: "Add Employee Role",
-      //     message: "Add Employee's Role",
-      //   },
-
-      //   {
-      //     type: "input",
-      //     name: "Add Manager",
-      //     message: "Add Employee's Manager",
-      //   },
-      //   // that employee is added to the database
-      //   // update employee role
-      //   {
-      //     type: "list",
-      //     name: "Update Role1",
-      //     message: "Select an Employee",
-      //     choices: ["John Doe", " Jane Plaine", "Anita Wine"],
-      //   },
-
-      //   {
-      //     type: "list",
-      //     name: "Update Role2",
-      //     message: "Select New Role for Update",
-      //     choices: ["Sales", "Engineering", "Legal"],
-      //   },
     ])
     .then((data) => {
       switch (data.task) {
@@ -124,10 +59,6 @@ function init() {
         case "Update an Employee Role":
           updateRole();
           break;
-
-        // .then((data) => {
-        //   if (data.task === "View All Departments") {
-        //     viewDepartments();
       }
     });
 }
@@ -290,11 +221,6 @@ function updateRole() {
         name: "updateRole2",
         message: "What is the role you want the employee to have",
       },
-      //      {
-      //        type: "input",
-      //        name: "updateRole3",
-      //        message: "Add the role's department id",
-      //      },
     ])
     .then((answers) => {
       pool.query(
